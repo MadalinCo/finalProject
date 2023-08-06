@@ -1,29 +1,25 @@
 package org.fasttrackit.finalProject.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import jakarta.persistence.*;
 
-@Data
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Builder
 public class Person {
     @Id
     @GeneratedValue
-    private long id;
+    private  long id;
     @Column
-    private String name;
+    private  String name;
     @Column
-    private double weight;
+    private  double weight;
     @Column
-    private double height;
-
-    public Person(String name, double weight, double height) {
-        this.name = name;
-        this.weight = weight;
-        this.height = height;
-    }
+    private  double height;
+   @Column
+    private int age;
+    @OneToOne(cascade=CascadeType.ALL)
+    private BMITypes bodyMassIndex;
 }
